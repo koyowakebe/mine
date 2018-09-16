@@ -10,7 +10,6 @@ DATA_FILE = 'norilog.json'
 
 def save_data(start, finish, memo, created_at):
     try:
-        # json モジュールでデータベースファイルを開きます
         database = json.load(open(DATA_FILE, mode="r", encoding="utf-8"))
     except FileNotFoundError:
         database = []
@@ -44,7 +43,6 @@ def save():
 
 @application.template_filter('nl2br')
 def nl2br_filter(s):
-    """改行文字を br タグに置き換えるテンプレートフィルター"""
     return escape(s).replace('\n', Markup('<br>'))
 
 @application.route('/')
